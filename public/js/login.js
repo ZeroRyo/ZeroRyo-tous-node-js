@@ -1,6 +1,6 @@
 /* eslint-disable */
 // const axios = require('axios').default;
-
+import {showAlert} from './alert';
 import axios from 'axios';
 export const login = async (email,password) => {
     console.log(email,password);
@@ -13,12 +13,31 @@ export const login = async (email,password) => {
                 password
             }
         });
-        console.log(res);
-        alert('thanh cong')
+        if (res.data.status === 'success') {
+            showAlert('success', 'Logged in successfully!');
+            window.setTimeout(() => {
+              location.assign('/');
+            }, 1500);
+        }
     }
     catch(err) {
-        console.log(err.response.data.message)
+        showAlert('error', err.response.data.message);
      }
   };
-  //di ăn cơm
+  // exports func logout
+export const logout = async () => {
+    try{
+        const res = await axios({
+            method: 'GET',
+            url: 'http://localhost:3000/api/v1/users/logout',
+        });
+       if((res.data.status = "success")) location.reload(true) 
+       showAlert('success', 'logout success');
+    }
+    catch(err) {
+        console.log(err.response);
+        showAlert('error', 'login failed, please try again');
+     }
+}
+
   
