@@ -1,5 +1,6 @@
 const express = require('express');
 // const bodyParser  =  Required ('body-parser')
+const methodOverride = require('method-override')
 const path = require('path');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -18,7 +19,7 @@ const viewRouter = require('./routes/viewRoutes')
 const app = express();
 app.set('view engine','pug');
 app.set('views', path.join(__dirname, 'views'))
-
+app.use(methodOverride('_method'))
 // 1) GLOBAL MIDDLEWARES
 // Set security HTTP headers
 //sever static files
