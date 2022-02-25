@@ -35,7 +35,6 @@ export const logout = async () => {
        showAlert('success', 'logout success');
     }
     catch(err) {
-        console.log(err.response);
         showAlert('error', 'login failed, please try again');
      }
 }
