@@ -2,7 +2,7 @@
 import '@babel/polyfill';
 import { showAlert } from './alert';
 import { displayMap } from './mapbox';
-import { login,logout } from './login';
+import { login, logout } from './login';
 import { updateSettings } from './updateSetting';
 //dom element
 const mapBox = document.getElementById('map');
@@ -16,38 +16,40 @@ if (mapBox) {
   displayMap(locations);
 }
 
-if(loginForm) {
-    loginForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        login(email, password);
-      });
-      
+if (loginForm) {
+  loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    login(email, password);
+  });
 }
-if ( logout ) logOutBtn.addEventListener('click', logout);
+if (logOutBtn) logOutBtn.addEventListener('click', logout, false);
 
-if ( userDataForm ) {
+if (userDataForm) {
   userDataForm.addEventListener('submit', e => {
     e.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    updateSettings({name, email},"data");
-  })
+    updateSettings({ name, email }, 'data');
+  });
 }
-if ( userPasswordForm ) {
+if (userPasswordForm) {
   userPasswordForm.addEventListener('submit', async e => {
     e.preventDefault();
     document.querySelector('.btn--save-password').textContent = 'Updating...';
-    const passwordCurrent= document.getElementById('password-current').value;
-    const password= document.getElementById('password').value;
-    const passwordConfirm= document.getElementById('password-confirm').value;
-    if( passwordCurrent === password){
-      showAlert('error','Password is not same');
+    const passwordCurrent = document.getElementById('password-current').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('password-confirm').value;
+    if (passwordCurrent === password) {
+      showAlert('error', 'Password is not same');
       return;
     }
-    await updateSettings({passwordCurrent,password,passwordConfirm },"password");
+    await updateSettings(
+      { passwordCurrent, password, passwordConfirm },
+      'password'
+    );
     document.querySelector('.btn--save-password').textContent = 'Save Password';
     userPasswordForm.reset();
-  })
+  });
 }

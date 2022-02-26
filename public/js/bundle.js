@@ -9314,7 +9314,7 @@ if (loginForm) {
   });
 }
 
-if (_login.logout) logOutBtn.addEventListener('click', _login.logout);
+if (logOutBtn) logOutBtn.addEventListener('click', _login.logout, false);
 
 if (userDataForm) {
   userDataForm.addEventListener('submit', function (e) {
@@ -9324,7 +9324,7 @@ if (userDataForm) {
     (0, _updateSetting.updateSettings)({
       name: name,
       email: email
-    }, "data");
+    }, 'data');
   });
 }
 
@@ -9356,7 +9356,7 @@ if (userPasswordForm) {
                 passwordCurrent: passwordCurrent,
                 password: password,
                 passwordConfirm: passwordConfirm
-              }, "password");
+              }, 'password');
 
             case 10:
               document.querySelector('.btn--save-password').textContent = 'Save Password';
@@ -9403,7 +9403,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56010" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61921" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

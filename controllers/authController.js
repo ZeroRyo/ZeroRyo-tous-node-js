@@ -63,6 +63,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   // 3) If everything ok, send token to client
   createSendToken(user, 200, res);
+  
 });
 
 exports.logout = (req, res) => {
@@ -157,7 +158,6 @@ exports.restrictTo = (...roles) => {
         new AppError('You do not have permission to perform this action', 403)
       );
     }
-
     next();
   };
 };
