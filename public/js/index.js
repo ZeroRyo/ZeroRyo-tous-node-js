@@ -4,12 +4,14 @@ import { showAlert } from './alert';
 import { displayMap } from './mapbox';
 import { login, logout } from './login';
 import { updateSettings } from './updateSetting';
+import { bookTour } from './stripe';
 //dom element
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
+const bookBtn = document.getElementById('book-tour');
 //delegation
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
@@ -27,11 +29,16 @@ if (loginForm) {
 if (logOutBtn) logOutBtn.addEventListener('click', logout, false);
 
 if (userDataForm) {
-  userDataForm.addEventListener('submit', e => {
+  userDataForm.addEventListener('submit', async e => {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    updateSettings({ name, email }, 'data');
+    document.querySelector('.btn--save-settings').textContent = 'Updating...'
+    const form = new FormData();
+    form.append('name', document.getElementById('name').value);
+    form.append('email', document.getElementById('email').value);
+    form.append('photo', document.getElementById('photo').files[0]);
+    await updateSettings(form, 'data');
+    document.querySelector('.btn--save-settings').textContent = 'Save settings'
+    location.reload(true)
   });
 }
 if (userPasswordForm) {
@@ -53,3 +60,12 @@ if (userPasswordForm) {
     userPasswordForm.reset();
   });
 }
+//bookBtn response dataset
+if (bookBtn) {
+  bookBtn.addEventListener('click', e => {
+    e.target.textContent = 'Processing...';
+    const { tourId } = e.target.dataset;
+    bookTour(tourId);
+  });
+}
+

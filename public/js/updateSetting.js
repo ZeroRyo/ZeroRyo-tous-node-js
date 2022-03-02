@@ -14,7 +14,7 @@ export const updateSettings = async (data , type) => {
     });
     if (res.data.status === 'success') {
       showAlert('success', `${type.toLowerCase()} update success`);
-      location.reload(true) 
+      // location.reload(true) 
     }
   } catch (err) {
     console.log(err.response);
