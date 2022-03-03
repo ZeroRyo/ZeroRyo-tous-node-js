@@ -705,6 +705,8 @@ body {
     gap: 1.2rem;
 }
 
+
+/* 
 @media only screen and (max-width: 56.25em) {
     .property {
         row-gap: 6.4rem;
@@ -712,7 +714,7 @@ body {
         -moz-column-gap: 4.8rem;
         column-gap: 4.8rem;
     }
-}
+} */
 
 .property__box {
     border-radius: 11px;
@@ -723,7 +725,7 @@ body {
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-    width: 35rem;
+    width: 30rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
