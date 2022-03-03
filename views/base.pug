@@ -7,19 +7,27 @@ head
         link(href='https://fonts.googleapis.com/css?family=Lato:300,300i,700' rel='stylesheet')
         link(rel='stylesheet' href='/css/style.css')
         link(rel='shortcut icon' type='/image/png' href='img/favicon.png')
+        meta(name='theme-color' content='#ffffff')
+        link(href='/assets/css/theme.css' rel='stylesheet')
+        link(href='/assets/css/style.css' rel='stylesheet')
         title Natours | Exciting tours for adventurous people
 body
     //header
     include _header
+    
     //main
     block content
     //footer
     include _footer
-    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js')
     //- script(src='/js/mapbox.js')
     //- script(src='/js/login.js')
+    
     script(src='https://js.stripe.com/v3/')
     script(src='/js/bundle.js')
-    
-    
+    script(src='/vendors/@popperjs/popper.min.js')
+    script(src='/vendors/bootstrap/bootstrap.min.js')
+    script(src='/vendors/is/is.min.js')
+    script(src='/vendors/fontawesome/all.min.js')
+    script(src='/assets/js/theme.js')
+
 
