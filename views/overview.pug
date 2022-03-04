@@ -94,7 +94,7 @@ block content
                                         li.property__item
                                             ion-icon.property__icon(name='contract')
                                             span.property__text= `rating (${tour.ratingsQuantity})`
-                                    a.btn.btn--primary.btn--xs.property__btn(href=`/tour/${tour.slug}`) Details
+                                    a.btn.property__btn(href=`/tour/${tour.slug}`) Details
                                 .property__footer
                                     .property__realtor
                                         img.property__realtor-img(src='./assets/img/realtors/realtor-1.jpg' alt='Realtor 1')
@@ -105,7 +105,7 @@ block content
                                         ion-icon.property__action(name='bookmark-outline')
                     
             .container-lg.u-text-center
-                a.btn.btn--outline.btn--sm(href='#') View all
+                a.btn--viewall(href='#') View all
             // <section> close ============================
             // ============================================
             // ============================================
