@@ -1,17 +1,15 @@
 body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    background-color: #F1F1F1;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 body::-webkit-scrollbar {
-    width: 10px;
-    background-color: #F1F1F1;
+    width: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0%;
 }
 
 body::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #28b487;
 }
 
@@ -846,13 +844,13 @@ body {
 }
 
 .property__information {
-    display: grid;
-    grid-template-columns: -webkit-max-content 1fr;
-    grid-template-columns: max-content 1fr;
+    display: flex;
     padding-bottom: 1.8rem;
     border-bottom: 1px solid #aaa;
     font-size: 1.4rem;
     line-height: 1.4;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .property__description {
@@ -871,6 +869,7 @@ body {
     flex-direction: column;
     gap: 1.2rem;
     padding: 0;
+    margin: 0;
 }
 
 .property__item {
@@ -880,7 +879,7 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    gap: 1.2rem;
+    gap: 1.2rem 1.2em !important;
 }
 
 .property__btn {
@@ -889,8 +888,9 @@ body {
     justify-self: end;
     background-image: linear-gradient(135deg, #7dd56f, #28b487);
     color: #f1f1f1;
-    border-radius: 1rem !important;
+    border-radius: 1.5rem !important;
     font-weight: 700 !important;
+    padding: 1.2em;
 }
 
 .property__btn:hover {
@@ -918,6 +918,7 @@ body {
     }
     .property {
         justify-content: center;
+        gap: 3.6rem;
     }
     .property__box {
         width: calc(100% - 2rem);
