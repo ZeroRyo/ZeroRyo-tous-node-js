@@ -1,4 +1,4 @@
-extend base
+extends base
 block content
     main.main
     .login-form
@@ -11,4 +11,4 @@ block content
                 label.form__label(for='password') Password
                 input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
             .form__group
-                button.btn.btn--green Login
+        button.btn.property__btn.btn.btn--green(style='width: 70px;text-align:center;font-size: 12px;height: 45px;') Login

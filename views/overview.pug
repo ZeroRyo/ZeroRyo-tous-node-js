@@ -80,21 +80,21 @@ block content
                             img.property__img(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
                             .property__text-box
                                 .property__header
-                                    span.property__type.property__type--house Family House
+                                    span.family-house-btn.property__type.property__type--house Family House
                                     p.property__price= `$${tour.price}`
                                 h3.property__title= tour.name
-                                .property__location
-                                    ion-icon.property__icon(name='location')
+                                .property__summary
+                                   
                                     h4= tour.summary
                                 .property__information.u-margin-bottom-sm
                                     ul.property__list
                                         li.property__item
-                                            ion-icon.property__icon(name='people')
+                                            ion-icon.property__icon(name='location')
                                             span.property__text= tour.startLocation.description
                                         li.property__item
                                             ion-icon.property__icon(name='contract')
                                             span.property__text= `rating (${tour.ratingsQuantity})`
-                                    a.btn.btn--primary.btn--xs.property__btn(href=`/tour/${tour.slug}`) Details
+                                    a.btn.property__btn(href=`/tour/${tour.slug}`) Details
                                 .property__footer
                                     .property__realtor
                                         img.property__realtor-img(src='./assets/img/realtors/realtor-1.jpg' alt='Realtor 1')
@@ -105,7 +105,7 @@ block content
                                         ion-icon.property__action(name='bookmark-outline')
                     
             .container-lg.u-text-center
-                a.btn.btn--outline.btn--sm(href='#') View all
+                a.btn--viewall(href='#') View all
             // <section> close ============================
             // ============================================
             // ============================================
