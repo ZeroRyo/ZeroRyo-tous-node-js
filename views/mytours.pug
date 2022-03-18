@@ -6,40 +6,42 @@ block content
             p.subheading
                 | Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ab culpa dicta
                 | repellendus iusto consequatur quia!
-        .container-lg.u-margin-bottom-lg
-            .property
-                each tour in tours
-                    .property__box
-                        img.property__img(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
-                        .property__text-box
-                            .property__header
-                                span.property__type.property__type--house Family House
-                                p.property__price= `$${tour.price}`
-                            h3.property__title= tour.name
-                            .property__location
-                                ion-icon.property__icon(name='location')
-                                h4= tour.summary
-                            .property__information.u-margin-bottom-sm
-                                ul.property__list
-                                    li.property__item
-                                        ion-icon.property__icon(name='people')
-                                        span.property__text= tour.startLocation.description
-                                    li.property__item
-                                        ion-icon.property__icon(name='contract')
-                                        span.property__text= `rating (${tour.ratingsQuantity})`
-                                a.btn.btn--primary.btn--xs.property__btn(href=`/tour/${tour.slug}`) Details
-                            .property__footer
-                                .property__realtor
-                                    img.property__realtor-img(src='./assets/img/realtors/realtor-1.jpg' alt='Realtor 1')
-                                    span.property__realtor-name= `${tour.difficulty} ${tour.duration}-day tour`
-                                .property__actions
-                                    ion-icon.property__action(name='share-social-outline')
-                                    ion-icon.property__action(name='heart-outline')
-                                    ion-icon.property__action(name='bookmark-outline')
-
-        .container-lg.u-text-center
-            a.btn.btn--outline.btn--sm(href='#') View all
-        // <section> close ============================
-        // ============================================
-        // ============================================
-        // <section> begin ============================
+        if tour
+            .container-lg.u-margin-bottom-lg
+                .property
+                    each tour in tours
+                        .property__box
+                            img.property__img(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
+                            .property__text-box
+                                .property__header
+                                    span.property__type.property__type--house Family House
+                                    p.property__price= `$${tour.price}`
+                                h3.property__title= tour.name
+                                .property__location
+                                    ion-icon.property__icon(name='location')
+                                    h4= tour.summary
+                                .property__information.u-margin-bottom-sm
+                                    ul.property__list
+                                        li.property__item
+                                            ion-icon.property__icon(name='people')
+                                            span.property__text= tour.startLocation.description
+                                        li.property__item
+                                            ion-icon.property__icon(name='contract')
+                                            span.property__text= `rating (${tour.ratingsQuantity})`
+                                    a.btn.btn--primary.btn--xs.property__btn(href=`/tour/${tour.slug}`) Details
+                                .property__footer
+                                    .property__realtor
+                                        img.property__realtor-img(src='./assets/img/realtors/realtor-1.jpg' alt='Realtor 1')
+                                        span.property__realtor-name= `${tour.difficulty} ${tour.duration}-day tour`
+                                    .property__actions
+                                        ion-icon.property__action(name='share-social-outline')
+                                        ion-icon.property__action(name='heart-outline')
+                                        ion-icon.property__action(name='bookmark-outline')
+        else
+            .tour(style='text-align: center;')
+                h1(style="font-size: 33px;color: brown;margin-bottom:15px") There are no tours here, you can book tour at home page
+                a.btn.btn--primary(href='/') Go to home page
+        //- -<section> close ============================
+        //- -============================================
+        //- -============================================
+        //- -<section> begin ============================

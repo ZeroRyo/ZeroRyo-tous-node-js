@@ -1,12 +1,12 @@
-const User = require('./../models/userModel');
 const sharp = require('sharp');
-const catchAsync = require('./../utils/catchAsync');
-const AppError = require('./../utils/appError');
-const factory = require('./handlerFactory');
 const multer = require('multer');
+const User = require("../models/userModel");
+const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
+const factory = require('./handlerFactory');
 // const upload = multer({ dest: 'public/img/users' })
 
-//create multerStorage
+// create multerStorage
 // const multerStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
 //     cb(null, 'public/img/users');
@@ -17,7 +17,7 @@ const multer = require('multer');
 //   }
 // });
 const multerStorage = multer.memoryStorage();
-//create multerFilter
+// create multerFilter
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
     cb(null, true);
@@ -25,15 +25,15 @@ const multerFilter = (req, file, cb) => {
     cb(new AppError('Not an image! Please upload only images', 400), false);
   }
 };
-//const upload use callback with muter
+// const upload use callback with muter
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter
 });
 
-//export uploadUserPhoto
+// export uploadUserPhoto
 exports.uploadUserPhoto = upload.single('photo');
-//exports resizeUserPhoto
+// exports resizeUserPhoto
 exports.resizeUserPhoto =catchAsync(async(req, res, next) => {
   if (!req.file) return next();
   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;

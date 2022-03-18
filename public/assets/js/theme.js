@@ -1,17 +1,17 @@
-"use strict";
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function ownKeys(object, enumerableOnly) { const keys = Object.keys(object); if (Object.getOwnPropertySymbols) { let symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter((sym) => Object.getOwnPropertyDescriptor(object, sym).enumerable); keys.push.apply(keys, symbols); } return keys; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _objectSpread(target) { for (let i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach((key) => { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach((key) => { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /* -------------------------------------------------------------------------- */
 
 /*                                    Utils                                   */
 
 /* -------------------------------------------------------------------------- */
-var docReady = function docReady(fn) {
+const docReady = function docReady(fn) {
   // see if DOM is already available
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", fn);
@@ -20,22 +20,20 @@ var docReady = function docReady(fn) {
   }
 };
 
-var resize = function resize(fn) {
+const resize = function resize(fn) {
   return window.addEventListener("resize", fn);
 };
 
-var isIterableArray = function isIterableArray(array) {
+const isIterableArray = function isIterableArray(array) {
   return Array.isArray(array) && !!array.length;
 };
 
-var camelize = function camelize(str) {
-  var text = str.replace(/[-_\s.]+(.)?/g, function (_, c) {
-    return c ? c.toUpperCase() : "";
-  });
+const camelize = function camelize(str) {
+  const text = str.replace(/[-_\s.]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ""));
   return "".concat(text.substr(0, 1).toLowerCase()).concat(text.substr(1));
 };
 
-var getData = function getData(el, data) {
+const getData = function getData(el, data) {
   try {
     return JSON.parse(el.dataset[camelize(data)]);
   } catch (e) {
@@ -45,26 +43,24 @@ var getData = function getData(el, data) {
 /* ----------------------------- Colors function ---------------------------- */
 
 
-var hexToRgb = function hexToRgb(hexValue) {
-  var hex;
+const hexToRgb = function hexToRgb(hexValue) {
+  let hex;
   hexValue.indexOf("#") === 0 ? hex = hexValue.substring(1) : hex = hexValue; // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
 
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex.replace(shorthandRegex, function (m, r, g, b) {
-    return r + r + g + g + b + b;
-  }));
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b));
   return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
 };
 
-var rgbaColor = function rgbaColor() {
-  var color = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "#fff";
-  var alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.5;
+const rgbaColor = function rgbaColor() {
+  const color = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "#fff";
+  const alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.5;
   return "rgba(".concat(hexToRgb(color), ", ").concat(alpha, ")");
 };
 /* --------------------------------- Colors --------------------------------- */
 
 
-var colors = {
+const colors = {
   primary: "#0091e9",
   secondary: "#002147",
   success: "#00d27a",
@@ -74,7 +70,7 @@ var colors = {
   light: "#F9FAFD",
   dark: "#000"
 };
-var grays = {
+const grays = {
   white: "#fff",
   100: "#f9fafd",
   200: "#edf2f9",
@@ -90,30 +86,30 @@ var grays = {
   black: "#000"
 };
 
-var hasClass = function hasClass(el, className) {
+const hasClass = function hasClass(el, className) {
   !el && false;
   return el.classList.value.includes(className);
 };
 
-var addClass = function addClass(el, className) {
+const addClass = function addClass(el, className) {
   el.classList.add(className);
 };
 
-var getOffset = function getOffset(el) {
-  var rect = el.getBoundingClientRect();
-  var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+const getOffset = function getOffset(el) {
+  const rect = el.getBoundingClientRect();
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   return {
     top: rect.top + scrollTop,
     left: rect.left + scrollLeft
   };
 };
 
-var isScrolledIntoView = function isScrolledIntoView(el) {
-  var top = el.offsetTop;
-  var left = el.offsetLeft;
-  var width = el.offsetWidth;
-  var height = el.offsetHeight;
+const isScrolledIntoView = function isScrolledIntoView(el) {
+  let top = el.offsetTop;
+  let left = el.offsetLeft;
+  const width = el.offsetWidth;
+  const height = el.offsetHeight;
 
   while (el.offsetParent) {
     // eslint-disable-next-line no-param-reassign
@@ -128,7 +124,7 @@ var isScrolledIntoView = function isScrolledIntoView(el) {
   };
 };
 
-var breakpoints = {
+const breakpoints = {
   xs: 0,
   sm: 576,
   md: 768,
@@ -137,14 +133,12 @@ var breakpoints = {
   xxl: 1540
 };
 
-var getBreakpoint = function getBreakpoint(el) {
-  var classes = el && el.classList.value;
-  var breakpoint;
+const getBreakpoint = function getBreakpoint(el) {
+  const classes = el && el.classList.value;
+  let breakpoint;
 
   if (classes) {
-    breakpoint = breakpoints[classes.split(" ").filter(function (cls) {
-      return cls.includes("navbar-expand-");
-    }).pop().split("-").pop()];
+    breakpoint = breakpoints[classes.split(" ").filter((cls) => cls.includes("navbar-expand-")).pop().split("-").pop()];
   }
 
   return breakpoint;
@@ -152,18 +146,18 @@ var getBreakpoint = function getBreakpoint(el) {
 /* --------------------------------- Cookie --------------------------------- */
 
 
-var setCookie = function setCookie(name, value, expire) {
-  var expires = new Date();
+const setCookie = function setCookie(name, value, expire) {
+  const expires = new Date();
   expires.setTime(expires.getTime() + expire);
   document.cookie = "".concat(name, "=").concat(value, ";expires=").concat(expires.toUTCString());
 };
 
-var getCookie = function getCookie(name) {
-  var keyValue = document.cookie.match("(^|;) ?".concat(name, "=([^;]*)(;|$)"));
+const getCookie = function getCookie(name) {
+  const keyValue = document.cookie.match("(^|;) ?".concat(name, "=([^;]*)(;|$)"));
   return keyValue ? keyValue[2] : keyValue;
 };
 
-var settings = {
+const settings = {
   tinymce: {
     theme: "oxide"
   },
@@ -173,15 +167,15 @@ var settings = {
 };
 /* -------------------------- Chart Initialization -------------------------- */
 
-var newChart = function newChart(chart, config) {
-  var ctx = chart.getContext("2d");
+const newChart = function newChart(chart, config) {
+  const ctx = chart.getContext("2d");
   return new window.Chart(ctx, config);
 };
 /* ---------------------------------- Store --------------------------------- */
 
 
-var getItemFromStore = function getItemFromStore(key, defaultValue) {
-  var store = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : localStorage;
+const getItemFromStore = function getItemFromStore(key, defaultValue) {
+  const store = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : localStorage;
 
   try {
     return JSON.parse(store.getItem(key)) || defaultValue;
@@ -190,38 +184,38 @@ var getItemFromStore = function getItemFromStore(key, defaultValue) {
   }
 };
 
-var setItemToStore = function setItemToStore(key, payload) {
-  var store = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : localStorage;
+const setItemToStore = function setItemToStore(key, payload) {
+  const store = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : localStorage;
   return store.setItem(key, payload);
 };
 
-var getStoreSpace = function getStoreSpace() {
-  var store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : localStorage;
+const getStoreSpace = function getStoreSpace() {
+  const store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : localStorage;
   return parseFloat((escape(encodeURIComponent(JSON.stringify(store))).length / (1024 * 1024)).toFixed(2));
 };
 
-var utils = {
-  docReady: docReady,
-  resize: resize,
-  isIterableArray: isIterableArray,
-  camelize: camelize,
-  getData: getData,
-  hasClass: hasClass,
-  addClass: addClass,
-  hexToRgb: hexToRgb,
-  rgbaColor: rgbaColor,
-  colors: colors,
-  grays: grays,
-  getOffset: getOffset,
-  isScrolledIntoView: isScrolledIntoView,
-  getBreakpoint: getBreakpoint,
-  setCookie: setCookie,
-  getCookie: getCookie,
-  newChart: newChart,
-  settings: settings,
-  getItemFromStore: getItemFromStore,
-  setItemToStore: setItemToStore,
-  getStoreSpace: getStoreSpace
+const utils = {
+  docReady,
+  resize,
+  isIterableArray,
+  camelize,
+  getData,
+  hasClass,
+  addClass,
+  hexToRgb,
+  rgbaColor,
+  colors,
+  grays,
+  getOffset,
+  isScrolledIntoView,
+  getBreakpoint,
+  setCookie,
+  getCookie,
+  newChart,
+  settings,
+  getItemFromStore,
+  setItemToStore,
+  getStoreSpace
 };
 /* -------------------------------------------------------------------------- */
 
@@ -229,10 +223,10 @@ var utils = {
 
 /* -------------------------------------------------------------------------- */
 
-var detectorInit = function detectorInit() {
-  var _window = window,
-      is = _window.is;
-  var html = document.querySelector('html');
+const detectorInit = function detectorInit() {
+  const _window = window;
+      const {is} = _window;
+  const html = document.querySelector('html');
   is.opera() && addClass(html, 'opera');
   is.mobile() && addClass(html, 'mobile');
   is.firefox() && addClass(html, 'firefox');
@@ -252,55 +246,55 @@ var detectorInit = function detectorInit() {
 -----------------------------------------------*/
 
 
-var navbarInit = function navbarInit() {
-  var Selector = {
+const navbarInit = function navbarInit() {
+  const Selector = {
     NAVBAR: '[data-navbar-on-scroll]',
     NAVBAR_COLLAPSE: '.navbar-collapse',
     NAVBAR_TOGGLER: '.navbar-toggler'
   };
-  var ClassNames = {
+  const ClassNames = {
     COLLAPSED: 'collapsed'
   };
-  var Events = {
+  const Events = {
     SCROLL: 'scroll',
     SHOW_BS_COLLAPSE: 'show.bs.collapse',
     HIDE_BS_COLLAPSE: 'hide.bs.collapse',
     HIDDEN_BS_COLLAPSE: 'hidden.bs.collapse'
   };
-  var DataKey = {
+  const DataKey = {
     NAVBAR_ON_SCROLL: 'navbar-light-on-scroll'
   };
-  var navbar = document.querySelector(Selector.NAVBAR); // responsive nav collapsed
+  const navbar = document.querySelector(Selector.NAVBAR); // responsive nav collapsed
 
-  navbar.addEventListener('click', function (e) {
+  navbar.addEventListener('click', (e) => {
     if (e.target.classList.contains('nav-link') && window.innerWidth < utils.getBreakpoint(navbar)) {
       navbar.querySelector(Selector.NAVBAR_TOGGLER).click();
     }
   });
 
   if (navbar) {
-    var windowHeight = window.innerHeight;
-    var html = document.documentElement;
-    var navbarCollapse = navbar.querySelector(Selector.NAVBAR_COLLAPSE);
+    const windowHeight = window.innerHeight;
+    const html = document.documentElement;
+    const navbarCollapse = navbar.querySelector(Selector.NAVBAR_COLLAPSE);
 
-    var allColors = _objectSpread(_objectSpread({}, utils.colors), utils.grays);
+    const allColors = _objectSpread(_objectSpread({}, utils.colors), utils.grays);
 
-    var name = utils.getData(navbar, DataKey.NAVBAR_ON_SCROLL);
-    var colorName = Object.keys(allColors).includes(name) ? name : 'light';
-    var color = allColors[colorName];
-    var bgClassName = "bg-".concat(colorName);
-    var paddingName = 'padding-transition';
-    var colorRgb = utils.hexToRgb(color);
+    const name = utils.getData(navbar, DataKey.NAVBAR_ON_SCROLL);
+    const colorName = Object.keys(allColors).includes(name) ? name : 'light';
+    const color = allColors[colorName];
+    const bgClassName = "bg-".concat(colorName);
+    const paddingName = 'padding-transition';
+    const colorRgb = utils.hexToRgb(color);
 
-    var _window$getComputedSt = window.getComputedStyle(navbar),
-        backgroundImage = _window$getComputedSt.backgroundImage;
+    const _window$getComputedSt = window.getComputedStyle(navbar);
+        const {backgroundImage} = _window$getComputedSt;
 
-    var transition = 'background-color,padding 0.35s ease';
+    const transition = 'background-color,padding 0.35s ease';
     navbar.style.backgroundImage = 'none'; // Change navbar background color on scroll
 
-    window.addEventListener(Events.SCROLL, function () {
-      var scrollTop = html.scrollTop;
-      var alpha = scrollTop / windowHeight * 0.35; // Add class on scroll
+    window.addEventListener(Events.SCROLL, () => {
+      const {scrollTop} = html;
+      let alpha = scrollTop / windowHeight * 0.35; // Add class on scroll
 
       navbar.classList.add('backdrop');
 
@@ -314,8 +308,8 @@ var navbarInit = function navbarInit() {
       alpha > 0 || utils.hasClass(navbarCollapse, 'show') ? navbar.classList.add(paddingName) : navbar.classList.remove(paddingName);
     }); // Toggle bg class on window resize
 
-    utils.resize(function () {
-      var breakPoint = utils.getBreakpoint(navbar);
+    utils.resize(() => {
+      const breakPoint = utils.getBreakpoint(navbar);
 
       if (window.innerWidth > breakPoint) {
         navbar.style.backgroundImage = html.scrollTop ? backgroundImage : 'none'; // navbar.style.transition = 'none';
@@ -328,18 +322,18 @@ var navbarInit = function navbarInit() {
       if (window.innerWidth <= breakPoint) {// navbar.style.transition = utils.hasClass(navbarCollapse, 'show') ? transition : 'none';
       }
     });
-    navbarCollapse.addEventListener(Events.SHOW_BS_COLLAPSE, function () {
+    navbarCollapse.addEventListener(Events.SHOW_BS_COLLAPSE, () => {
       navbar.classList.add(bgClassName); // navbar.classList.add(paddingName);
 
       navbar.style.backgroundImage = backgroundImage;
       navbar.style.transition = transition;
     });
-    navbarCollapse.addEventListener(Events.HIDE_BS_COLLAPSE, function () {
+    navbarCollapse.addEventListener(Events.HIDE_BS_COLLAPSE, () => {
       navbar.classList.remove(bgClassName); // navbar.classList.remove(paddingName);
 
       !html.scrollTop && (navbar.style.backgroundImage = 'none');
     });
-    navbarCollapse.addEventListener(Events.HIDDEN_BS_COLLAPSE, function () {// navbar.style.transition = 'none';
+    navbarCollapse.addEventListener(Events.HIDDEN_BS_COLLAPSE, () => {// navbar.style.transition = 'none';
     });
   }
 };
@@ -350,14 +344,14 @@ var navbarInit = function navbarInit() {
 /* -------------------------------------------------------------------------- */
 
 
-var scrollToTop = function scrollToTop() {
-  document.querySelectorAll('[data-anchor] > a, [data-scroll-to]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      var _utils$getData;
+const scrollToTop = function scrollToTop() {
+  document.querySelectorAll('[data-anchor] > a, [data-scroll-to]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      let _utils$getData;
 
       e.preventDefault();
-      var el = e.target;
-      var id = utils.getData(el, 'scroll-to') || el.getAttribute('href');
+      const el = e.target;
+      const id = utils.getData(el, 'scroll-to') || el.getAttribute('href');
       window.scroll({
         top: (_utils$getData = utils.getData(el, 'offset-top')) !== null && _utils$getData !== void 0 ? _utils$getData : utils.getOffset(document.querySelector(id)).top - 100,
         left: 0,
@@ -374,4 +368,4 @@ var scrollToTop = function scrollToTop() {
 docReady(navbarInit);
 docReady(detectorInit);
 docReady(scrollToTop);
-//# sourceMappingURL=theme.js.map
+// # sourceMappingURL=theme.js.map

@@ -5247,6 +5247,7 @@ fieldset:disabled .btn {
         -webkit-box-direction: normal;
         -ms-flex-direction: row;
         flex-direction: row;
+        font-size: 15px;
     }
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         position: absolute;
@@ -5389,6 +5390,7 @@ fieldset:disabled .btn {
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:focus {
     color: #F1A501;
+    
 }
 
 .navbar-light .navbar-nav .nav-link {

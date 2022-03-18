@@ -47,7 +47,7 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
   res.redirect(req.originalUrl.split('?')[0]);
 });
 
-//Restriction for users to be able to only review a tour they booked.
+// Restriction for users to be able to only review a tour they booked.
 exports.checkIfBooked = catchAsync(async (req, res, next) => {
   // To check if booked was bought by user who wants to review it
   const booking = await Booking.find({ user: req.user.id, tour: req.body.tour });

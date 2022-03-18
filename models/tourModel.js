@@ -49,7 +49,7 @@ const tourSchema = new mongoose.Schema(
     priceDiscount: {
       type: Number,
       validate: {
-        validator: function(val) {
+        validator(val) {
           // this only points to current doc on NEW document creation
           return val < this.price;
         },
