@@ -10,6 +10,7 @@ exports.setTourUserIds = (req, res, next) => {
 };
 
 // func getAll reviews
+// aksdá
 exports.getAllReviews = factory.getAll(Review);
 exports.getReview = factory.getOne(Review);
 exports.createReview = factory.createOne(Review);
