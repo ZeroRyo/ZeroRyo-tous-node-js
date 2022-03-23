@@ -1,4 +1,4 @@
-const Review = require("../models/reviewModel");
+const Review = require('../models/reviewModel');
 const factory = require('./handlerFactory');
 // const catchAsync = require('./../utils/catchAsync');
 
@@ -9,6 +9,7 @@ exports.setTourUserIds = (req, res, next) => {
   next();
 };
 
+// func getAll reviews
 exports.getAllReviews = factory.getAll(Review);
 exports.getReview = factory.getOne(Review);
 exports.createReview = factory.createOne(Review);

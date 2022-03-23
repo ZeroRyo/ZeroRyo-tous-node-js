@@ -31,7 +31,7 @@ block content
                                     a.btn.btn--primary.btn--xs.property__btn(href=`/tour/${tour.slug}`) Details
                                 .property__footer
                                     .property__realtor
-                                        img.property__realtor-img(src=`/img/tours/${tour.imageCover}` alt='Realtor 1')
+                                        img.property__realtor-img(src=`/img/tours/${tour.imageCover}` alt=`${tour.name}`)
                                         span.property__realtor-name= `${tour.difficulty} ${tour.duration}-day tour`
                                     .property__actions
                                         ion-icon.property__action(name='share-social-outline')
