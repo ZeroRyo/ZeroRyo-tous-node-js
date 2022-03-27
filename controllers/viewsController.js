@@ -86,3 +86,11 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
     user: updatedUser
   });
 });
+
+exports.stored = catchAsync(async (req, res, next) => {
+  const users = await User.find();
+  res.status(200).render('stored', {
+    title: 'Stored Users',
+      users
+  });
+});

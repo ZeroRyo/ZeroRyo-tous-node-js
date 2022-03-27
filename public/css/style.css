@@ -11,7 +11,10 @@
   background-color: #55c57a;
   color: #fff;
 }
-
+.red{
+  padding:0;
+  color:red;
+}
 *,
 *::before,
 *::after {
@@ -181,6 +184,30 @@ body {
   right: 2rem;
   width: 70%;
   z-index: 10;
+}
+
+.btn-link-a{
+  color:red ;
+  font-size: 1.6rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  font-weight: 400;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /*Add later when we use this for the button in form*/
+  border: none;
+  cursor: pointer;
+}
+
+.btn-link-a:hover{
+   color:#f0b9b8;
+   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+   text-decoration: none;
 }
 
 .btn,
@@ -1281,6 +1308,25 @@ body {
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.6rem;
+}
+
+.content-center-x{
+  text-align: left;
+  font-size: 36px;
+}
+
+.content-a{
+text-align: left;
+  font-size: 18px;
+  float:left;
+}
+
+.content-a:hover{
+  background-color: antiquewhite;
+    color:#c46a68;
+   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+   text-decoration: none;
+   border-radius: 5px;
 }
 
 .form__user-photo {

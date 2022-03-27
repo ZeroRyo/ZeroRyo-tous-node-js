@@ -1767,3 +1767,18 @@ body {
     width: 2.4rem;
     height: 2.4rem;
 }
+td{
+        font-family: sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+        margin-bottom: 15px; 
+    }
+
+th{
+     font-family: sans-serif;
+        font-size: 20px;
+        font-weight: normal;
+        margin: 0;
+        margin-bottom: 15px; 
+}
