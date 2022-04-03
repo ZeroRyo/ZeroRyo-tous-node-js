@@ -86,3 +86,32 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
     user: updatedUser
   });
 });
+<<<<<<< Updated upstream
+=======
+
+exports.stored = catchAsync(async (req, res, next) => {
+  const users = await User.find();
+  res.status(200).render('stored', {
+    title: 'Stored Users',
+      users
+  });
+});
+
+exports.storedTour = catchAsync(async (req, res, next) => {
+  // Save the Tour in the DB
+  const newTour = await new Tour(req.params.body);
+  await newTour.save();
+  // const tour = await Tour.find();
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour: newTour
+    }
+      });
+})
+
+exports.createTour = catchAsync(async (req, res, next) => {
+
+  res.status(200).render('createtours');
+});
+>>>>>>> Stashed changes
