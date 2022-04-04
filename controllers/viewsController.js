@@ -95,11 +95,11 @@ exports.stored = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.storeTour = catchAsync(async (req, res, next) => {
-  const newTour = await new Tour(req.params.body);
-  await newTour.save();
-  res.status(200).redirect('/tour/stored');
-})
+// exports.storeTour = catchAsync(async (req, res, next) => {
+//   const newTour = await new Tour(req.params.body);
+//   await newTour.save();
+//   res.status(200).redirect('/tour/stored');
+// })
 
 exports.storedTour = catchAsync(async (req, res, next) => {
   const tours = await Tour.find();
@@ -108,7 +108,21 @@ exports.storedTour = catchAsync(async (req, res, next) => {
     tours
   });
 });
-
-exports.createTour = catchAsync(async (req, res, next) => {
+// getTour
+exports.getTour = catchAsync(async (req, res, next) => {
   res.status(200).render('createtours');
+});
+//createtours
+exports.creatTour = catchAsync(async (req, res, next) => {
+  const newTour = await new Tour({
+    name: req.body.name,
+    price: req.body.price,
+    description: req.body.description,
+    duration: req.body.duration,
+    maxGroupSize: req.body.maxGroupSize,
+    difficulty: req.body.difficulty,
+    summary: req.body.summary
+  });
+  await newTour.save();
+  res.status(200).redirect('/tour/stored');
 });
