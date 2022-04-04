@@ -4,7 +4,7 @@ block content
     main.main
         div.mt-4
             h1(style="text-align:center;font-size:32px") Create a new tour
-            form(class="mt-4" method="POST" action="/tour/stored") 
+            form(class="mt-4" method="POST" action='/tour/stored' enctype='multipart/form-data')
                 div.row.mt-4(style="font-size:20px")
                     div.col-md-6.form-group.mt-5
                         label(for="tourName") Tour Name
@@ -15,6 +15,11 @@ block content
                     div.col-md-6.form-group.mt-5
                         label(for="tourPrice") Tour Price
                         input(type="number" class="form-control" id="tourprice" name="price" style="height:45px;font-size:15px" placeholder="Enter tour price" required)
+                    div.col-md-6.form-group.mt-5    
+                        input.form__upload(type='file', accept='image/*', id ='images' , name='images' multiple)
+                        label(for='images') Images
+                        input.form__upload(type='file', accept='image/*', id ='imageCover' , name='imageCover')
+                        label(for='imageCover') ImageCover
                     //- div.col-md-6.form-group.mt-5  
                     //-     label(for="tourImg") Tour Image
                     //-     input(type="text" class="form-control" id="tourImg" name="tourImg" style="height: 45px;font-size: 15px;" placeholder="Enter tour name" required)

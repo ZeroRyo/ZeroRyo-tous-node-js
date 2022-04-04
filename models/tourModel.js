@@ -67,7 +67,7 @@ const tourSchema = new mongoose.Schema(
     },
     imageCover: {
       type: String,
-      //required: [true, 'A tour must have a cover image']
+      required: [true, 'A tour must have a cover image']
     },
     images: [String],
     createdAt: {
@@ -80,17 +80,17 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: false
     },
-    startLocation: {
+    startLocation: [{
       // GeoJSON
       type: {
-        type: String,
+        type: 'String',
         default: 'Point',
-        enum: ['Point']
+        enum: 'Point'
       },
       coordinates: [Number],
       address: String,
       description: String
-    },
+    }],
     locations: [
       {
         type: {
