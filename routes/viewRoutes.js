@@ -4,12 +4,11 @@ const authController = require('../controllers/authController');
 const bookingController = require('../controllers/bookingController');
 
 const router = express.Router();
-<<<<<<< Updated upstream
-=======
+
 router.get('/stored', viewsController.stored);
-router.post('/tour/stored', viewsController.storedTour);
-router.get('/create',viewsController.createTour);
->>>>>>> Stashed changes
+router.post('/tour/store', viewsController.storeTour);
+router.get('/create', viewsController.createTour);
+router.get('/tour/stored', viewsController.storedTour);
 router.get('/', bookingController.createBookingCheckout, authController.isLoggedIn, viewsController.getOverview);
 router.get('/tour/:slug', authController.isLoggedIn, viewsController.getTour);
 router.get('/signin', authController.isLoggedIn, viewsController.getSigIn);
